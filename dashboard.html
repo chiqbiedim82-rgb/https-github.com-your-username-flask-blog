@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="row text-center">
+  <div class="col-12">
+    <h1 class="display-4 fw-bold text-primary mb-4">Welcome to Your Blog Dashboard</h1>
+    <p class="lead text-muted mb-5">Manage your online presence and social media.</p>
+  </div>
+</div>
+
+<div class="row g-4">
+  <div class="col-md-4">
+    <div class="card text-white bg-primary h-100 shadow">
+      <div class="card-body text-center">
+        <h2 class="display-4">{{ total_posts }}</h2>
+        <p class="fs-5">Total Post</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-white bg-success h-100 shadow">
+      <div class="card-body text-center">
+        <h2 class="display-4">123K</h2>
+        <p class="fs-5">Visitors</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-white bg-info h-100 shadow">
+      <div class="card-body text-center">
+        <h2 class="display-4">24</h2>
+        <p class="fs-5">Live Views</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if latest_post %}
+<div class="mt-5">
+  <h3>Latest Post</h3>
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title">{{ latest_post.title }}</h5>
+      <p class="text-muted small">By {{ latest_post.author }} • {{ latest_post.date }}</p>
+      <p class="card-text">{{ latest_post.content[:150] }}...</p>
+      <a href="{{ url_for('feed') }}" class="btn btn-outline-primary">View All Posts</a>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<div class="text-center mt-5">
+  <a href="{{ url_for('create') }}" class="btn btn-lg btn-success">Write a New Post</a>
+</div>
+{% endblock %}
+
+
+
